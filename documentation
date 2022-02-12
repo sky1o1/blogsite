@@ -1,0 +1,13 @@
+Blog Site Documentation
+===
+This is a online blog site.
+
+This project was created using React Js for the frontend and Node Js for the backend.
+
+The user can view the blogs without login in.
+
+User can register and login.
+
+User can create, read, update and delete blogs.
+
+User can edit their profile
