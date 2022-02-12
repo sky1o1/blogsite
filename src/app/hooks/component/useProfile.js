@@ -10,7 +10,7 @@ const initialValues = {
 
 export function useProfile() {
   const [editMode, setEditMode] = useState(false);
-  const { data, isLoading } = useGetUser();
+  const { data, isLoading } = useGetUser(true);
   const { mutate } = useUpdateProfile({});
 
   const formik = useFormik({

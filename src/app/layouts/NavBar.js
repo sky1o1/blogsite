@@ -1,5 +1,12 @@
 import React from "react";
-import { AppBar, Toolbar, Typography, makeStyles } from "@material-ui/core";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  makeStyles,
+  Avatar,
+  Grid,
+} from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
 import { useGetUser } from "../hooks/api/useUser";
 
@@ -7,10 +14,6 @@ const useStyles = makeStyles((theme) => ({
   navlinks: {
     marginLeft: theme.spacing(10),
     display: "flex",
-  },
-  logo: {
-    flexGrow: "1",
-    cursor: "pointer",
   },
   link: {
     textDecoration: "none",
@@ -27,7 +30,9 @@ const useStyles = makeStyles((theme) => ({
 function Navbar() {
   const classes = useStyles();
   const history = useHistory();
-  const { data: userData } = useGetUser();
+  const { data: userData } = useGetUser(
+    localStorage.getItem("access_token") ? true : false
+  );
 
   localStorage.setItem("id", userData?._id);
   localStorage.setItem("name", userData?.name);
@@ -41,6 +46,14 @@ function Navbar() {
     history.push("/login");
   };
 
+  function stringAvatar(name) {
+    if (name) {
+      return {
+        children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
+      };
+    }
+  }
+
   return (
     <AppBar position="static">
       <Toolbar>
@@ -48,32 +61,37 @@ function Navbar() {
           <Link exact to="/" className={classes.link}>
             Home
           </Link>
-          <Link to="/my-blogs" className={classes.link}>
-            My Blogs
-          </Link>
-          <Link to="/profile" className={classes.link}>
-            Profile
-          </Link>
-          <div className={classes.link}>
-            <Typography style={{ cursor: "pointer" }} onClick={handleLogout}>
-              Logout
-            </Typography>
+          <div style={{ width: "100%" }}>
+            <Link to="/my-blogs" className={classes.link}>
+              My Blogs
+            </Link>
           </div>
-          {userData ? (
-            <div className={classes.link}>
-              <Typography style={{ cursor: "pointer" }} onClick={handleLogout}>
-                Logout
-              </Typography>
-            </div>
-          ) : (
-            <div className={classes.link}>
-              <Typography
-                style={{ cursor: "pointer" }}
-                onClick={() => history.push("/login")}>
-                Login
-              </Typography>
-            </div>
-          )}
+          <Grid container justify="flex-end">
+            <Grid item xs={4}>
+              <div className={classes.link}>
+                <Avatar
+                  style={{ cursor: "pointer" }}
+                  onClick={() => history.push("/profile")}
+                  {...stringAvatar(userData && userData?.name)}
+                />
+              </div>
+            </Grid>
+            <Grid item xs={4}>
+              {userData ? (
+                <div className={classes.link}>
+                  <Typography
+                    style={{ cursor: "pointer" }}
+                    onClick={handleLogout}>
+                    Logout
+                  </Typography>
+                </div>
+              ) : (
+                <Link to="/login" className={classes.link}>
+                  Login
+                </Link>
+              )}
+            </Grid>
+          </Grid>
         </div>
       </Toolbar>
     </AppBar>

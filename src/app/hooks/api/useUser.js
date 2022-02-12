@@ -1,10 +1,11 @@
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import { getUser, editUser } from "../../api/user";
 
-export const useGetUser = () => {
+export const useGetUser = (val) => {
   return useQuery(["getUser"], () => getUser(), {
     refetchOnWindowFocus: false,
     refetchInterval: false,
+    enabled: val,
   });
 };
 
