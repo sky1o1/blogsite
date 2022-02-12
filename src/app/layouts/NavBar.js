@@ -48,29 +48,31 @@ function Navbar() {
           <Link exact to="/" className={classes.link}>
             Home
           </Link>
-          {/* <Link to="/my-blogs" className={classes.link}>
+          <Link to="/my-blogs" className={classes.link}>
             My Blogs
-          </Link> */}
+          </Link>
+          <Link to="/profile" className={classes.link}>
+            Profile
+          </Link>
           <div className={classes.link}>
-            <Typography
-              style={{ cursor: "pointer" }}
-              onClick={() => history.push("/my-blogs")}>
-              My Blogs
+            <Typography style={{ cursor: "pointer" }} onClick={handleLogout}>
+              Logout
             </Typography>
           </div>
-          {userData && (
-            <>
-              <Link to="/profile" className={classes.link}>
-                Profile
-              </Link>
-              <div className={classes.link}>
-                <Typography
-                  style={{ cursor: "pointer" }}
-                  onClick={handleLogout}>
-                  Logout
-                </Typography>
-              </div>
-            </>
+          {userData ? (
+            <div className={classes.link}>
+              <Typography style={{ cursor: "pointer" }} onClick={handleLogout}>
+                Logout
+              </Typography>
+            </div>
+          ) : (
+            <div className={classes.link}>
+              <Typography
+                style={{ cursor: "pointer" }}
+                onClick={() => history.push("/login")}>
+                Login
+              </Typography>
+            </div>
           )}
         </div>
       </Toolbar>
