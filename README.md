@@ -48,13 +48,11 @@ yup 0.32.11
 
 
 
-Installing dev dependencies from package.json file
+Dev dependencies requirements
 ===
 @testing-library/jest-dom 5.16.2
 
 @testing-library/react 12.1.2
-
-gh-pages 3.2.3
 
 jest 27.5.1
 
