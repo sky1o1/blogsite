@@ -194,7 +194,9 @@ function BlogDetailPage() {
               <Typography>
                 -{moment(data.createdAt).format("MMM Do YY")}
               </Typography>
-              <Typography>-{data.user.name}</Typography>
+              <Typography onClick={() => history.push(`/profile/${data?._id}`)}>
+                -{data.user.name}
+              </Typography>
             </CardContent>
           )}
           {editMode && (
@@ -223,7 +225,7 @@ function BlogDetailPage() {
           )}
           <Snackbar
             open={openSuccessSnackBar}
-            autoHideDuration={6000}
+            autoHideDuration={3000}
             onClose={handleCloseSnackbar}>
             <Alert
               onClose={handleCloseSnackbar}
@@ -234,7 +236,7 @@ function BlogDetailPage() {
           </Snackbar>
           <Snackbar
             open={openErrorSnackBar}
-            autoHideDuration={6000}
+            autoHideDuration={3000}
             onClose={handleCloseSnackbar}>
             <Alert
               onClose={handleCloseSnackbar}

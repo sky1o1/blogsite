@@ -32,6 +32,14 @@ export function useProfile() {
     setEditMode(true);
   };
 
+  function stringAvatar(name) {
+    if (name) {
+      return {
+        children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
+      };
+    }
+  }
+
   return {
     data,
     isLoading,
@@ -40,5 +48,6 @@ export function useProfile() {
     handleUpdate,
     handleSubmit,
     setEditMode,
+    stringAvatar,
   };
 }

@@ -9,6 +9,7 @@ import {
   Box,
   Button,
   TextField,
+  Avatar,
 } from "@material-ui/core";
 import Skeleton from "@material-ui/lab/Skeleton";
 import { useProfile } from "../../../hooks/component/useProfile";
@@ -44,6 +45,7 @@ function Profile() {
     handleUpdate,
     handleSubmit,
     setEditMode,
+    stringAvatar,
   } = useProfile();
 
   useEffect(() => {
@@ -55,19 +57,6 @@ function Profile() {
   }, [data]);
 
   return isLoading ? (
-    <Card variant="outlined" className={classes.body}>
-      <Grid container spacing={2}>
-        <Grid item xs={4} key={1}>
-          <Box width={390} marginRight={0.5} my={5}>
-            <Box pt={0.5}>
-              <Skeleton />
-            </Box>
-            <Skeleton variant="rect" width={390} height={150} />
-          </Box>
-        </Grid>
-      </Grid>
-    </Card>
-  ) : (
     <div className="container">
       <Grid
         container
@@ -76,7 +65,33 @@ function Profile() {
         alignItems="center">
         <Grid item xs={4} style={{ cursor: "pointer" }}>
           <Card className={classes.root} variant="outlined">
+            <Box width={300} margin={0.5} my={5}>
+              <Box pt={0.5}>
+                <Skeleton />
+              </Box>
+              <Skeleton variant="rect" width={300} height={250} />
+            </Box>
+          </Card>
+        </Grid>
+      </Grid>
+    </div>
+  ) : (
+    <div className="container">
+      <Grid
+        container
+        direction="column"
+        justifyContent="flex-start"
+        alignItems="center">
+        <Grid item xs={4}>
+          <Card className={classes.root} variant="outlined">
             <CardHeader title="My Profile" />
+            <CardContent style={{ display: "flex", justifyContent: "center" }}>
+              <Avatar
+                onClick={() => history.push("/profile")}
+                {...stringAvatar(data && data?.name)}
+              />
+            </CardContent>
+
             <CardContent>
               {!editMode ? (
                 <Typography variant="h6">{data.name}</Typography>

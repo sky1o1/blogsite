@@ -53,7 +53,7 @@ export function useBlogsForm() {
     onSubmit: (values) => {
       mutate(values, {
         onSuccess: (val) => {
-          setOpenSuccessSnackBar(true);
+          setOpenSuccessSnackBar(val.success);
           setSuccessMessage(val.message);
           history.push(`/blog-${val?.data?._id}`);
         },

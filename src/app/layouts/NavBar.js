@@ -4,7 +4,6 @@ import {
   Toolbar,
   Typography,
   makeStyles,
-  Avatar,
   Grid,
 } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
@@ -46,14 +45,6 @@ function Navbar() {
     history.push("/login");
   };
 
-  function stringAvatar(name) {
-    if (name) {
-      return {
-        children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
-      };
-    }
-  }
-
   return (
     <AppBar position="static">
       <Toolbar>
@@ -61,21 +52,13 @@ function Navbar() {
           <Link exact to="/" className={classes.link}>
             Home
           </Link>
-          <div style={{ width: "100%" }}>
-            <Link to="/my-blogs" className={classes.link}>
-              My Blogs
-            </Link>
-          </div>
+          <Link to="/my-blogs" className={classes.link}>
+            Blogs
+          </Link>
+          <Link to="/profile" className={classes.link}>
+            Profile
+          </Link>
           <Grid container justify="flex-end">
-            <Grid item xs={4}>
-              <div className={classes.link}>
-                <Avatar
-                  style={{ cursor: "pointer" }}
-                  onClick={() => history.push("/profile")}
-                  {...stringAvatar(userData && userData?.name)}
-                />
-              </div>
-            </Grid>
             <Grid item xs={4}>
               {userData ? (
                 <div className={classes.link}>
