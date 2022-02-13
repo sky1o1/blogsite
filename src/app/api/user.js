@@ -17,7 +17,6 @@ export const editUser = async (formValues) => {
 export const uploadFoto = async (formValues, id) => {
   const formdata = new FormData();
   formdata.append("photo", formValues);
-  console.log(formdata);
-  // const { data } = await axiosInstance.put(`/user/${id}/foto`, formdata);
-  // return data;
+  const { data } = await axiosInstance.put(`/user/${id}/foto`, formdata);
+  return data;
 };
