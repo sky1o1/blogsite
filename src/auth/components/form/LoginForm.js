@@ -44,7 +44,6 @@ function LoginForm() {
           </CardContent>
           <Grid item xs={12}>
             <TextField
-              className="emailTest"
               inputProps={{ "data-testid": "email" }}
               name="email"
               label="Email"

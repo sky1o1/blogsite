@@ -7,6 +7,18 @@ import LoginForm from "../LoginForm";
 const queryClient = new QueryClient();
 
 describe("Login Form Component", () => {
+  it("validate for email for correct input", () => {
+    const { getByTestId } = render(
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <LoginForm />
+        </Router>
+      </QueryClientProvider>
+    );
+    const input = getByTestId("email");
+    expect(input).toBeTruthy;
+  });
+
   it("validate for email for incorrect input", async () => {
     const { getByTestId } = render(
       <QueryClientProvider client={queryClient}>

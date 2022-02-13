@@ -52,12 +52,16 @@ function Navbar() {
           <Link exact to="/" className={classes.link}>
             Home
           </Link>
-          <Link to="/my-blogs" className={classes.link}>
-            Blogs
-          </Link>
-          <Link to="/profile" className={classes.link}>
-            Profile
-          </Link>
+          {userData && (
+            <>
+              <Link to="/my-blogs" className={classes.link}>
+                Blogs
+              </Link>
+              <Link to="/profile" className={classes.link}>
+                Profile
+              </Link>
+            </>
+          )}
           <Grid container justify="flex-end">
             <Grid item xs={4}>
               {userData ? (
