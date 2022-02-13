@@ -13,14 +13,14 @@ User can create, read, update and delete blogs.
 User can edit their profile.
 
 Running the app locally
-`npm start`
+npm start
 
 For testing
-===
+
 React testing library was used for testing.
 
 Running test
-`npm test`
+npm test
 
 DEPLOYMENT
 ===
