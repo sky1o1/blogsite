@@ -23,7 +23,6 @@ const AppRoute = () => {
           <Route exact path="/unauthorized" component={UnauthorizedPage} />
           <PrivateRoute exact path="/my-blogs" component={MyBlogs} />
           <PrivateRoute exact path="/profile" component={Profile} />
-          <PrivateRoute exact path="/profile/:id" component={Profile} />
           <PrivateRoute exact path="/blog/create" component={BlogForm} />
           <PrivateRoute exact path="/blog-:id" component={BlogDetailPage} />
         </PageLayout>

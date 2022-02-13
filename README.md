@@ -49,9 +49,29 @@ yup 0.32.11
 Installation
 ===
 
+Installing dev dependencies from package.json file
+===
+@testing-library/jest-dom 5.16.2
+
+@testing-library/react 12.1.2
+
+gh-pages 3.2.3
+
+jest 27.5.1
+
+jest-dom 4.0.0
+
+jest-watch-typeahead 0.6.5
+
+react-test-render 1.1.2
+
+===
+
 Installing packages from package.json file
 `npm install`
 
-
 running the server
 `npm start`
+
+testing the server
+`npm test`

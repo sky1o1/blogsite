@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useGetUser, useUpdateProfile } from "../api/useUser";
+import { useGetUser, useUpdateProfile, useUploadFoto } from "../api/useUser";
 import { useFormik } from "formik";
 import updateValidationSchema from "../../../auth/components/validation-schema/updateValidationSchema";
 
@@ -11,6 +11,7 @@ const initialValues = {
 export function useProfile() {
   const [editMode, setEditMode] = useState(false);
   const { data, isLoading } = useGetUser(true);
+  const { mutate: uploadMutate } = useUploadFoto({});
   const { mutate } = useUpdateProfile({});
 
   const formik = useFormik({
@@ -40,6 +41,10 @@ export function useProfile() {
     }
   }
 
+  const handleUpload = (e) => {
+    uploadMutate(e.target.files[0]);
+  };
+
   return {
     data,
     isLoading,
@@ -49,5 +54,6 @@ export function useProfile() {
     handleSubmit,
     setEditMode,
     stringAvatar,
+    handleUpload,
   };
 }

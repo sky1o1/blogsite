@@ -14,7 +14,7 @@ import {
 import Skeleton from "@material-ui/lab/Skeleton";
 import { useProfile } from "../../../hooks/component/useProfile";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     borderRadius: "10px",
     minHeight: "250px",
@@ -33,7 +33,11 @@ const useStyles = makeStyles({
     paddingLeft: "50px",
     marginLeft: "35px",
   },
-});
+  large: {
+    width: theme.spacing(7),
+    height: theme.spacing(7),
+  },
+}));
 
 function Profile() {
   const classes = useStyles();
@@ -46,6 +50,7 @@ function Profile() {
     handleSubmit,
     setEditMode,
     stringAvatar,
+    // handleUpload,
   } = useProfile();
 
   useEffect(() => {
@@ -86,10 +91,26 @@ function Profile() {
           <Card className={classes.root} variant="outlined">
             <CardHeader title="My Profile" />
             <CardContent style={{ display: "flex", justifyContent: "center" }}>
-              <Avatar
-                onClick={() => history.push("/profile")}
-                {...stringAvatar(data && data?.name)}
-              />
+              <Grid
+                container
+                direction="column"
+                justifyContent="center"
+                alignItems="center">
+                <Grid item xs={12}>
+                  {data && data?.photo ? (
+                    <Avatar
+                      alt={data?.name}
+                      src={`https://ibriz-blog-site-backend.herokuapp.com/uploads/${data?.photo}`}
+                      className={classes.large}
+                    />
+                  ) : (
+                    <Avatar
+                      style={{ cursor: "pointer" }}
+                      {...stringAvatar(data && data?.name)}
+                    />
+                  )}
+                </Grid>
+              </Grid>
             </CardContent>
 
             <CardContent>
@@ -153,12 +174,30 @@ function Profile() {
                   </Grid>
                 </CardContent>
               ) : (
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleUpdate}>
-                  Edit Profile
-                </Button>
+                <Grid
+                  container
+                  direction="column"
+                  justifyContent="center"
+                  alignItems="center"
+                  spacing={2}>
+                  <Grid item xs={12}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={handleUpdate}>
+                      Edit Profile
+                    </Button>
+                  </Grid>
+                  {/* <Grid iten xs={12}>
+                    <input
+                      type="file"
+                      name="file"
+                      onChange={(event) => {
+                        handleUpload(event);
+                      }}
+                    />
+                  </Grid> */}
+                </Grid>
               )}
             </CardContent>
           </Card>
