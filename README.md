@@ -46,8 +46,7 @@ web-vitals 2.1.4
     
 yup 0.32.11
 
-Installation
-===
+
 
 Installing dev dependencies from package.json file
 ===
@@ -65,6 +64,7 @@ jest-watch-typeahead 0.6.5
 
 react-test-render 1.1.2
 
+Installation
 ===
 
 Installing packages from package.json file
