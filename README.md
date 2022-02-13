@@ -73,3 +73,6 @@ running the server
 
 testing the server
 `npm test`
+
+For api tetsing postman was used.
+API documentation : https://documenter.getpostman.com/view/12120647/UVeMKPeC?fbclid=IwAR2MD8ZHXYXUwyW9iLmos_kR13uFfc20e0-W7ULb3URgsakeNXIcqjFVm90
