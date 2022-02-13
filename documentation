@@ -4,10 +4,29 @@ This is a online blog site.
 
 This project was created using React Js for the frontend and Node Js for the backend.
 
-The user can view the blogs without login in.
+The user can view the all blogs without login in.
 
 User can register and login.
 
 User can create, read, update and delete blogs.
 
-User can edit their profile
+User can edit their profile.
+
+Running the app locally
+`npm start`
+
+For testing
+===
+React testing library was used for testing.
+
+Running test
+`npm test`
+
+DEPLOYMENT
+===
+Frontend deployment : https://www.netlify.com/
+Deployed app at https://trusting-leavitt-626004.netlify.app/
+
+Backend deployment : https://heroku.com/
+Deployed app at https://ibriz-blog-site-backend.herokuapp.com
+
